@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
   sequelize.define(
     "Driver",
     {
-      idDriver: {
+      id: {
         type: DataTypes.UUID,
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,

@@ -1,6 +1,6 @@
-const axios = require("axios");
-const { filterTeams } = require("../utils/index");
 const { Team } = require("../db");
+const axios = require("axios");
+const filterTeams = require("../utils/filterTeams");
 
 async function getAllTeams() {
   const driversApi = (await axios.get(`http://localhost:5000/drivers/`)).data;

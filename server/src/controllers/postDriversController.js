@@ -1,13 +1,14 @@
 const { Driver } = require("../db");
+const associateDriversTeams = require("../utils/associateDriversTeams");
 
 async function postDriversController(
   forename,
   surname,
+  teams,
   description,
   image,
   nationality,
-  dob,
-  teamId
+  dob
 ) {
   forename =
     forename.charAt(0).toUpperCase() + forename.substring(1).toLowerCase();
@@ -20,15 +21,18 @@ async function postDriversController(
     dob,
   });
 
-  const arrayIds = teamId.split(", ");
+  associateDriversTeams(newDriver, teams);
 
-  if (arrayIds.length === 1) await newDriver.addTeam(teamId);
-  else
-    arrayIds.forEach(async (id) => {
-      await newDriver.addTeam(id);
-    });
-
-  return newDriver;
+  return {
+    id: newDriver.id,
+    forename,
+    surname,
+    teams,
+    description,
+    image,
+    nationality,
+    dob,
+  };
 }
 
 module.exports = postDriversController;

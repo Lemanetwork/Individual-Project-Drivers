@@ -1,11 +1,9 @@
+const { Driver, Team } = require("../db");
 const axios = require("axios");
-const { Driver } = require("../db");
 
-async function getDriverById(idDriver, src) {
+async function getDriverById(id, src) {
   if (src === "api") {
-    const { data } = await axios.get(
-      `http://localhost:5000/drivers/${idDriver}`
-    );
+    const { data } = await axios.get(`http://localhost:5000/drivers/${id}`);
 
     const driverDetail = {
       id: data.id,
@@ -22,15 +20,33 @@ async function getDriverById(idDriver, src) {
 
     return driverDetail;
   } else {
-    const driverDetail = await Driver.findByPk(idDriver);
+    const { forename, surname, Teams, description, image, nationality, dob } =
+      await Driver.findByPk(id, {
+        include: {
+          model: Team,
+          attributes: ["name"],
+        },
+      });
 
-    if (!driverDetail)
-      throw new Error(`No se encontraron Drivers con el id: ${idDriver}`);
+    let teamsCollection = [];
 
-    return driverDetail;
+    Teams.forEach((teamDriver) => {
+      teamsCollection.push(teamDriver.name);
+    });
+
+    teamsCollection = teamsCollection.join(", ");
+
+    return {
+      id,
+      forename,
+      surname,
+      teams: teamsCollection,
+      description,
+      image,
+      nationality,
+      dob,
+    };
   }
 }
 
-module.exports = {
-  getDriverById,
-};
+module.exports = getDriverById;

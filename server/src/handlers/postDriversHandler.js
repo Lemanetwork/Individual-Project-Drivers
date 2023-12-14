@@ -1,29 +1,29 @@
 const postDriversController = require("../controllers/postDriversController");
 
 async function postDriversHandler(req, res) {
-  const { forename, surname, description, image, nationality, dob, teamId } =
+  const { forename, surname, teams, description, image, nationality, dob } =
     req.body;
 
   if (
     !forename ||
     !surname ||
+    !teams ||
     !description ||
     !image ||
     !nationality ||
-    !dob ||
-    !teamId
+    !dob
   )
-    res.status(400).send("Faltan datos del Driver");
+    res.status(400).json({ error: "Faltan datos del Driver" });
 
   try {
     const newDriver = await postDriversController(
       forename,
       surname,
+      teams,
       description,
       image,
       nationality,
-      dob,
-      teamId
+      dob
     );
 
     res.status(200).json(newDriver);

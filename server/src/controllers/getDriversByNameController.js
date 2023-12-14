@@ -1,8 +1,9 @@
 const { Driver } = require("../db");
 const axios = require("axios");
-const { balanceInfo, filterDrivers } = require("../utils/index");
+const balanceDriversInfo = require("../utils/balanceDriversInfo");
+const filterDrivers = require("../utils/filterDrivers");
 
-async function getDriversByName(forename) {
+async function getDriversByNameController(forename) {
   forename =
     forename.charAt(0).toUpperCase() + forename.substring(1).toLowerCase();
   const driversDb = await Driver.findAll({ where: { forename } });
@@ -10,7 +11,7 @@ async function getDriversByName(forename) {
 
   let filteredInfoApi = filterDrivers(driversApi, forename);
 
-  const balancedInfoApi = balanceInfo(filteredInfoApi);
+  const balancedInfoApi = balanceDriversInfo(filteredInfoApi);
 
   filteredInfoApi = [...driversDb, ...balancedInfoApi];
 
@@ -22,16 +23,4 @@ async function getDriversByName(forename) {
   return filteredInfoApi;
 }
 
-async function getAllDrivers() {
-  const driversDb = await Driver.findAll();
-  const driversApi = (await axios.get(`http://localhost:5000/drivers/`)).data;
-
-  const balancedInfoApi = balanceInfo(driversApi);
-
-  return [...driversDb, ...balancedInfoApi];
-}
-
-module.exports = {
-  getDriversByName,
-  getAllDrivers,
-};
+module.exports = getDriversByNameController;
