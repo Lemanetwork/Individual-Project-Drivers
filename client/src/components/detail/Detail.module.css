@@ -1,0 +1,38 @@
+.imgDetail {
+    margin: 10px auto;
+    width:300px;
+    height: auto;
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+h2 {
+  margin: 0;
+  color: #BA181B;
+}
+
+p:nth-of-type(3){
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+/* .backButton {
+    position: absolute;
+  top: 10%;
+  right: 10%;
+  left: 10%;
+  margin-left: 15px;
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #65b5f6;
+  background-color: transparent;
+  border: 1px solid #65b5f6;
+  border-radius: 40px;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+*/
+/* .backButton {
+    color: #BA181B;
+} */

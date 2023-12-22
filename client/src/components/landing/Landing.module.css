@@ -1,0 +1,30 @@
+.divLanding {
+background-size: cover;
+background-image: url("../../assets/F1.png");
+position: absolute;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+}
+
+.landingButton {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  left: 10%;
+  font-size: 4em;
+  font-weight: 500;
+  color: #BA181B;
+  background-color: transparent;
+  border: 1px solid aqua;
+  border-radius: 40px;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.landingButton:hover {
+  transform: scale(1.2);
+  color: aqua;
+}

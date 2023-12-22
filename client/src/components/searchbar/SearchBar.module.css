@@ -1,0 +1,38 @@
+.divSearchBar {
+    /* border: none; */
+    /* outline: none; */
+    padding: 10px;
+    /* width: 50px; */
+    /* line-height: 30px; */
+    margin-bottom: 30px;
+}
+
+.searchButton {
+    /* position: absolute;
+  top: 10%;
+  right: 10%;
+  left: 10%; */
+  margin-left: 15px;
+  font-size: 1.1em;
+  font-weight: 500;
+  color: aqua;
+  background-color: transparent;
+  border: 1px solid aqua;
+  border-radius: 40px;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.searchButton {
+    transform: scale(1.2);
+}
+
+input {
+    width: 200px;
+    height: 27px;
+    padding-left: 5px;
+    font-size: 16px;
+    color: aqua;
+    border-radius: 40px;
+}

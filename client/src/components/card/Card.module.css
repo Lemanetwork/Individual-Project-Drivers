@@ -1,0 +1,43 @@
+.divCard {
+    display: flex;
+    flex-direction: column;
+    background-color:darkred;
+    border: 1px solid;
+    border-radius: 40px;
+    padding: 10px;
+    cursor:grab;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translatez(0);
+    transition: transform 0.25s ease-out;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.divCard:hover{
+    transform: scale(1.05);
+}
+
+.imgCard {
+    margin: 10px auto 40px auto;
+    width:200px;
+    height: auto;
+    border-radius: 10px;
+}
+
+h3, p {
+    margin: 0;
+}
+
+.h3Link:hover {
+    transform: scale(1.05);
+    color: white;
+}
+
+.pTeams {
+    position: absolute;
+    bottom:5px;
+    left:20px;
+    right:20px;
+}

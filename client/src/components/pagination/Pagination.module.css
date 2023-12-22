@@ -1,0 +1,15 @@
+.list {
+    margin: 0 auto 2em auto;
+    padding: 0;
+    list-style: none;
+}
+
+.itemNumber {
+    cursor: pointer;
+    margin: 0.2em;
+    display: inline;
+}
+
+.itemNumber:hover {
+  background-color: darkred;
+}
