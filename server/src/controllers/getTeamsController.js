@@ -3,15 +3,27 @@ const axios = require("axios");
 const filterTeams = require("../utils/filterTeams");
 
 async function getAllTeams() {
-  const driversApi = (await axios.get(`http://localhost:5000/drivers/`)).data;
+  const teamsDb = await Team.findAll();
 
-  const filteredTeams = filterTeams(driversApi);
+  if (teamsDb.length === 0) {
+    const driversApi = (await axios.get(`http://localhost:5000/drivers/`)).data;
 
-  filteredTeams.forEach(async (name) => {
-    await Team.create({ name });
-  });
+    const filteredTeams = filterTeams(driversApi);
 
-  return filteredTeams;
+    filteredTeams.forEach(async (name) => {
+      await Team.create({ name });
+    });
+
+    return filteredTeams;
+  } else {
+    let allTeamsDb = [];
+
+    teamsDb.forEach((team) => {
+      allTeamsDb.push(team.name);
+    });
+
+    return allTeamsDb;
+  }
 }
 
 module.exports = getAllTeams;

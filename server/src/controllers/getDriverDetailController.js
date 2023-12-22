@@ -11,7 +11,7 @@ async function getDriverById(id, src) {
       surname: data.name.surname,
       teams: data.teams,
       description: data.description,
-      image: data.image
+      image: data.image.url
         ? data.image.url
         : "https://img.freepik.com/premium-photo/man-racing-suit-stands-front-blurry-background_901003-10316.jpg",
       nationality: data.nationality,
@@ -25,6 +25,9 @@ async function getDriverById(id, src) {
         include: {
           model: Team,
           attributes: ["name"],
+          through: {
+            attributes: [],
+          },
         },
       });
 
