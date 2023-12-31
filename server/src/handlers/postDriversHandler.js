@@ -13,7 +13,9 @@ async function postDriversHandler(req, res) {
     !nationality ||
     !dob
   )
-    res.status(400).json({ error: "Faltan datos del Driver" });
+    res.status(400).json({
+      error: "We are missing some important information about the Driver",
+    });
 
   try {
     const newDriver = await postDriversController(

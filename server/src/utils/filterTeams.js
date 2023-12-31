@@ -13,13 +13,19 @@ function filterTeams(driversApi) {
     teamsFilter2 = [...teamsFilter2, ...team.split(",")];
   });
 
-  const setTeams = new Set(teamsFilter2);
+  teamsFilter1 = [];
 
-  teamsFilter2 = Array.from(setTeams);
+  teamsFilter2.forEach((team) => {
+    teamsFilter1.push(team.trim());
+  });
 
-  teamsFilter2.sort();
+  const setTeams = new Set(teamsFilter1);
 
-  return teamsFilter2;
+  teamsFilter1 = Array.from(setTeams);
+
+  teamsFilter1.sort();
+
+  return teamsFilter1;
 }
 
 module.exports = filterTeams;

@@ -29,7 +29,7 @@ async function getDriversByNameController(forename) {
   let allData = [...dataDb, ...dataApi];
 
   if (allData.length === 0)
-    throw new Error(`No se encontraron Drivers con el nombre: ${forename}`);
+    throw new Error(`We did not found Drivers with the forename: ${forename}`);
   else if (allData.length > 15) allData = allData.slice(0, 15);
 
   return allData;

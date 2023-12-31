@@ -32,7 +32,6 @@ async function getDriverById(id, src) {
       });
 
     let teamsCollection = [];
-
     Teams.forEach((teamDriver) => {
       teamsCollection.push(teamDriver.name);
     });
