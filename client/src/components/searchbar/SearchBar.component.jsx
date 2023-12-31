@@ -14,9 +14,13 @@ export default function SearchBar({pagination}) {
   
   function handleSubmit(event) {
     event.preventDefault();
-    searchString.length > 1 ? dispatch(getDriversByName(searchString)) : null;
+    if(searchString.length === 0)
+    alert('The Search Field is empty, please! type a Forename')
+    else {
+      (dispatch(getDriversByName(searchString)));
+      pagination(1);
+    }
     setSearchString("");
-    pagination(1);
   };
 
   return (

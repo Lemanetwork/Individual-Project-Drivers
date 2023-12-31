@@ -1,38 +1,37 @@
 .divSearchBar {
-    /* border: none; */
-    /* outline: none; */
-    padding: 10px;
-    /* width: 50px; */
-    /* line-height: 30px; */
-    margin-bottom: 30px;
+    margin-top: 28px;
 }
 
 .searchButton {
-    /* position: absolute;
-  top: 10%;
-  right: 10%;
-  left: 10%; */
-  margin-left: 15px;
-  font-size: 1.1em;
-  font-weight: 500;
-  color: aqua;
-  background-color: transparent;
-  border: 1px solid aqua;
-  border-radius: 40px;
-  padding: 0 16px;
-  cursor: pointer;
-  transition: all 0.5s ease-in-out;
+    width: 100px;
+    height: 25px;
+    margin-left: 15px;
+    font-size: 0.8em;
+    font-weight: 300;
+    color: aqua;
+    background-color: transparent;
+    border: 1px solid aqua;
+    border-radius: 40px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: 0.5s linear;
 }
 
-.searchButton {
+.searchButton:hover {
     transform: scale(1.2);
+    border-color: rgb(255, 30, 0);
 }
 
 input {
+    padding-left: 10px;
     width: 200px;
-    height: 27px;
-    padding-left: 5px;
-    font-size: 16px;
+    height: 26px;
+    font-size: 14px;
     color: aqua;
     border-radius: 40px;
+    transition: 0.5s linear;
+}
+
+input:hover {
+    border-color: aqua;
 }

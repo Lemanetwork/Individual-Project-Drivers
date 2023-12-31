@@ -1,43 +1,46 @@
 .divCard {
-    display: flex;
-    flex-direction: column;
-    background-color:darkred;
-    border: 1px solid;
-    border-radius: 40px;
+    width: 300px;
+    height: auto;
+    background-color:transparent;
+    border: 2px solid rgb(255, 30, 0);
+    /* border: 2px solid rgb(255, 30, 0); */
+    border-radius: 20px;
     padding: 10px;
     cursor:grab;
     -moz-osx-font-smoothing: grayscale;
     backface-visibility: hidden;
     transform: translatez(0);
-    transition: transform 0.25s ease-out;
+    transition: transform 0.5s ease-out;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
 .divCard:hover{
     transform: scale(1.05);
+    border-color: aqua;
 }
 
 .imgCard {
-    margin: 10px auto 40px auto;
+    object-fit: cover;
     width:200px;
-    height: auto;
+    height: 300px;
     border-radius: 10px;
 }
 
-h3, p {
-    margin: 0;
+.h3Link {
+    transition: 0.25s ease-out;
+    text-shadow: 2px 2px 3px black;
+    margin: 0 auto 8px auto;
+    color: aqua;
 }
 
 .h3Link:hover {
     transform: scale(1.05);
-    color: white;
+    color: rgb(255, 30, 0);
 }
 
 .pTeams {
-    position: absolute;
-    bottom:5px;
-    left:20px;
-    right:20px;
+    padding: 0 10px;
+    font-size: 15px;
 }

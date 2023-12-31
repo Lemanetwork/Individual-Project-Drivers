@@ -1,0 +1,138 @@
+.mainDiv {
+    width: 510px;
+    height: 600px;
+    border: 2px solid rgb(255, 30, 0);
+    border-radius: 25px;
+    padding: 30px 20px 50px 20px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    animation-duration: 8s;
+    animation-name: changeShadow;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes changeShadow {
+    from {
+        box-shadow: 0px 2px 5px rgba(255, 30, 0);
+        border: 2px solid rgb(255, 30, 0);
+    }
+    to {
+        box-shadow: 0px 2px 5px aqua;
+        border: 2px solid aqua;
+    }
+    }    
+
+.divCreate {
+    margin: 0 auto;
+    width: 80%;
+    height: 100%;
+}
+
+.backButton, .createDriver {
+    width: 100px;
+    height: 25px;
+    font-size: 0.8em;
+    font-weight: 300;
+    color: aqua;
+    background-color: transparent;
+    border: 1px solid aqua;
+    border-radius: 40px;
+    padding: 0;
+    cursor: pointer;
+    transition: 0.5s linear;
+}
+
+.backButton {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+}
+
+.createDriver {
+    position: absolute ;
+    top: 50px;
+    right: 100px;
+    width: 150px;
+}
+
+.backButton:hover, .createDriver:hover {
+    transform: scale(1.2);
+    border-color: rgb(255, 30, 0);
+}
+
+.createLabel {
+    display: block;
+    font-size: 16px;
+    margin: 20px auto 0 auto;
+  }
+
+  .createInput {
+    margin: 0 auto;
+    width: 400px;
+    height: 22px;
+    font-size: 14px;
+    color: aqua;
+    border-radius: 40px;
+    text-align: center;
+    transition: 0.5s linear;
+}
+
+.createInput:hover {
+    border-color: aqua;
+}
+
+.createSelect {
+    width: 300px;
+    height: 26px;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.87);
+    transition: 0.5s linear;
+}
+
+.createSelect:hover {
+    color: aqua;
+    border-color: aqua;
+}
+
+.createTextarea {
+    width: 400px;
+    height: 40px;
+    border-radius: 7px;
+    padding: 5px;
+    font-size: 16px;
+    color: aqua;
+    resize: none;
+    transition: 0.5s linear;
+}
+
+.createTextarea:hover {
+    border-color: aqua;
+}
+
+span {
+    position:absolute;
+    display: block;
+    width: 400px;
+    color: rgb(255, 30, 0);
+    font-size: 14px;
+}
+
+.teamsSpan {
+    all: unset;
+    color: aqua;
+    transition: 0.25s linear;
+}
+
+.teamsSpan:hover {
+    cursor: pointer;
+    color: rgb(255, 30, 0);
+}
+
+h2 {
+    top: 10px;
+    font-size: 30px;
+}

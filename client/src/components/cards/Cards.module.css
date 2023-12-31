@@ -1,7 +1,7 @@
 .divCards {
-    width: 70vw;
-    margin: 0 auto;
+    width: 75vw;
+    margin: 135px auto 60px auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 60px;
+    gap: 60px 100px;
 }

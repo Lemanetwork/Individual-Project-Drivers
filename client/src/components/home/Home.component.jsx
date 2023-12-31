@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllDrivers, getDriversByName } from '../../redux/actions/actions';
+import { getAllDrivers } from '../../redux/actions/actions';
 import Cards from  '../cards/Cards.component';
 import NavigationBar from '../navbar/NavigationBar.component';
 import Pagination from '../pagination/Pagination.component';
-import './Home.module.css';
+import style from './Home.module.css';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -14,8 +14,9 @@ export default function Home() {
   const indexOfLastDriver = currentPage * driversPerPage;
   const indexOfFristDriver = indexOfLastDriver - driversPerPage;
   const currentDrivers = allDrivers.slice(indexOfFristDriver, indexOfLastDriver);
-  
-  const pagination = pageNumber => {
+  const maxNumberOfPages = Math.ceil(allDrivers.length/driversPerPage);
+
+  function pagination (pageNumber) {
     setCurrentPage(pageNumber);
   }
 
@@ -25,15 +26,21 @@ export default function Home() {
   };
 
   useEffect(()=>{
-    dispatch(getAllDrivers());
-    // return (()=> clearDetail()); //! CLEAR SCREEN
+      dispatch(getAllDrivers());
   }, [dispatch]);
   
-  return (
-    <div>
-        <NavigationBar handleReload={handleReload} pagination={pagination}/>
-        <Pagination driversPerPage={driversPerPage} allDrivers={allDrivers.length} pagination={pagination}/>
-        <Cards currentDrivers={currentDrivers} />
+  if(allDrivers.length > 0)
+    return (
+      <div className={style.divHome}>
+          <NavigationBar handleReload={handleReload} pagination={pagination}/>
+          <Cards currentDrivers={currentDrivers} />
+          <Pagination currentPage={currentPage} maxNumberOfPages={maxNumberOfPages} pagination={pagination} setCurrentPage={setCurrentPage} />
       </div>
-  )
+    );
+  else 
+    return (
+      <div className={style.divLoader}>
+        <h1 style={{fontSize: '70px'}}>Loading...</h1>
+      </div>
+    );
 };

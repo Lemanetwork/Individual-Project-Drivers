@@ -2,13 +2,33 @@
     margin: 10px auto;
     width:300px;
     height: auto;
-    border: 1px solid;
+    border: 1px solid rgba(0,0,0,0.75);
     border-radius: 15px;
+    transition: 1.5s linear;
+    animation-duration: 8s;
+    animation-name: changeShadow;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes changeShadow {
+    from {
+        box-shadow: 0px 3px 5px rgba(0,0,0,0.75);
+    }
+    to {
+        box-shadow: 0px 3px 5px aqua;
+        transform: scale(1.04);
+    }
+}
+
+.imgDetail:hover {
+    border-color: aqua;
 }
 
 h2 {
   margin: 0;
   color: #BA181B;
+  text-shadow: 5px 5px 6px black;
 }
 
 p:nth-of-type(3){
@@ -16,23 +36,39 @@ p:nth-of-type(3){
     font-style: italic;
 }
 
-/* .backButton {
-    position: absolute;
-  top: 10%;
-  right: 10%;
-  left: 10%;
-  margin-left: 15px;
-  font-size: 1.1em;
-  font-weight: 500;
-  color: #65b5f6;
-  background-color: transparent;
-  border: 1px solid #65b5f6;
-  border-radius: 40px;
-  padding: 0 16px;
-  cursor: pointer;
-  transition: all 0.5s ease-in-out;
+p:nth-of-type(4){
+    font-weight: 200;
+    margin-bottom: 10px;
 }
-*/
-/* .backButton {
-    color: #BA181B;
-} */
+
+p:nth-of-type(5) {
+    font-weight: 200;
+    color: aqua;
+}
+
+.pNationality {
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.backButton {
+    position: fixed;
+    top: 50px;
+    left: 100px;
+    width: 100px;
+    height: 25px;
+    font-size: 0.8em;
+    font-weight: 300;
+    color: aqua;
+    background-color: transparent;
+    border: 1px solid aqua;
+    border-radius: 40px;
+    padding: 0;
+    cursor: pointer;
+    transition: 0.5s linear;
+}
+
+.backButton:hover {
+    transform: scale(1.2);
+    border-color: rgb(255, 30, 0);
+}

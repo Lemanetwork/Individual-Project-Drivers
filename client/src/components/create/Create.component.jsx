@@ -9,6 +9,7 @@ export default function Create() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const allTeams = useSelector(state => state.allTeams);
+  const [errors, setErrors] = useState({description: " "});
 
   const [driverData, setDriverData] = useState({
     forename: "",
@@ -19,8 +20,6 @@ export default function Create() {
     description: "",
     teams: []
   });
-
-  const [errors, setErrors] = useState({description: " "});
   
   function handleChange(event) {
     setDriverData({...driverData, [event.target.name]: event.target.value});
@@ -28,11 +27,23 @@ export default function Create() {
   };
 
   function handleSelect(event) {
+    const newTeam = event.target.value;
+    if(!driverData.teams.includes(newTeam)) {
+      setDriverData({
+        ...driverData, 
+        teams: [...driverData.teams, newTeam]
+      });
+      setErrors(validation({...driverData, teams: [...driverData.teams, newTeam]}));
+    } else alert(`You already added the team ${newTeam} to the list`)
+  };
+
+  function handleRemove(remTeam) {
+    const myTeams = driverData.teams.filter((team) => team !== remTeam);
     setDriverData({
-      ...driverData, 
-      teams: [...driverData.teams, event.target.value]
+      ...driverData,
+      teams: [...myTeams]
     });
-    setErrors(validation({...driverData, teams: [...driverData.teams, event.target.value]}));
+    setErrors(validation({...driverData, teams: [...myTeams]}));
   };
 
   function handleSubmit(event) {
@@ -56,67 +67,71 @@ useEffect(()=> {
 },[]);
 
   return (
-    <div>
-      <div>
-        <Link to={'/home'} ><button>Back</button></Link>
-        <h2>Create Drivers Form</h2>
-      </div>
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor='forename'>Forename:
-          <input name='forename' value={driverData.forename} onChange={handleChange}/>
-        </label>
-        {errors.forename && <span>{errors.forename}</span>}
-      </div>
+    <div className={style.mainDiv}>
 
       <div>
-        <label htmlFor='surname'>Surname:
-          <input name='surname' value={driverData.surname} onChange={handleChange}/>
-        </label>
-        {errors.surname && <span>{errors.surname}</span>}
+        <Link to={'/home'} ><button className={style.backButton} >Back</button></Link>
+        <h2>Create Driver Form</h2>
       </div>
 
-      <div>
-        <label htmlFor='nationality'>Nationality:
-          <input name='nationality' value={driverData.nationality} onChange={handleChange}/>
-        </label>
-        {errors.nationality && <span>{errors.nationality}</span>}
-      </div>
+      <form onSubmit={handleSubmit}>
+        <div className={style.divCreate}>
+          <label className={style.createLabel} htmlFor='forename'>Forename:
+            <input className={style.createInput} name='forename' value={driverData.forename} onChange={handleChange}/>
+          </label>
+          {driverData.forename.length > 0 && errors.forename && <span>{errors.forename}</span>}
+        </div>
 
-      <div>
-        <label htmlFor='image'>Image (URL):
-          <input name='image' value={driverData.image} onChange={handleChange}/>
-        </label>
-        {errors.image && <span>{errors.image}</span>}
-      </div>
+        <div className={style.divCreate}>
+          <label  className={style.createLabel} htmlFor='surname'>Surname:
+            <input className={style.createInput} name='surname' value={driverData.surname} onChange={handleChange}/>
+          </label>
+          {driverData.surname.length > 0 && errors.surname && <span>{errors.surname}</span>}
+        </div>
 
-      <div>
-        <label htmlFor='dob'>Date of Birth:
-          <input name='dob' value={driverData.dob} onChange={handleChange}/>
-        </label>
-        {errors.dob && <span>{errors.dob}</span>}
-      </div>
+        <div className={style.divCreate}>
+          <label  className={style.createLabel} htmlFor='nationality'>Nationality:
+            <input className={style.createInput} name='nationality' value={driverData.nationality} onChange={handleChange}/>
+          </label>
+          {driverData.nationality.length > 0 && errors.nationality && <span>{errors.nationality}</span>}
+        </div>
 
-      <div>
-        <label htmlFor='description'>Description:
-          <input name='description' value={driverData.description} onChange={handleChange}/>
-        </label>
-        {errors.description && <span>{errors.description}</span>}
-      </div>
+        <div className={style.divCreate}>
+          <label  className={style.createLabel} htmlFor='image'>Image (URL):
+            <input className={style.createInput} name='image' value={driverData.image} onChange={handleChange}/>
+          </label>
+          {driverData.image.length > 0 && errors.image && <span>{errors.image}</span>}
+        </div>
 
-      <div>
-        <label htmlFor='teams'>Teams:</label>
-        <select name='teams' onChange={handleSelect}>
-          {allTeams.map((team) => (
-            <option value={team} key={team}>{team}</option>
-          ))};
-        </select>
-        {errors.teams && <span>{errors.teams}</span>}
-        <br/>
-          <span>{driverData.teams.map(team => team + ', ')}</span>
-      </div>
+        <div className={style.divCreate}>
+          <label  className={style.createLabel} htmlFor='dob'>Date of Birth:
+            <input className={style.createInput} name='dob' value={driverData.dob} onChange={handleChange}/>
+          </label>
+          {driverData.dob.length > 0 && errors.dob && <span>{errors.dob}</span>}
+        </div>
 
-      {errors.forename || errors.surname || errors.nationality || errors.image || errors.dob || errors.description || errors.teams ? null : <button type='submit' >Create Driver</button>}
+        <div className={style.divCreate}>
+          <label  className={style.createLabel} htmlFor='description'>Description:
+            <textarea className={style.createTextarea} name='description' value={driverData.description} onChange={handleChange} placeholder='Type the description here...' ></textarea>
+          </label>
+          {driverData.description.length > 0 && errors.description && <span>{errors.description}</span>}
+        </div>
+
+        <div className={style.divCreate}>
+          <label  className={style.createLabel} htmlFor='teams'>Teams:</label>
+          <select className={style.createSelect} name='teams' onChange={handleSelect}>
+            {allTeams.map((team) => (
+              <option value={team} key={team}>{team}</option>
+            ))};
+          </select>
+          <br/>
+          {errors.forename || errors.surname || errors.nationality || errors.image || errors.dob || errors.description ? null : errors.teams && <span>{errors.teams}</span>}
+          <br/>
+            {/* <span className={style.teamsSpan}>{driverData.teams.map(team => team + ', ')}</span> */}
+            {driverData.teams.map(myTeam => (<span className={style.teamsSpan} onClick={()=> handleRemove(myTeam)} key={myTeam}>{driverData.teams.length < 2 ? myTeam : `${myTeam}, ` }</span>))}
+        </div>
+
+        {errors.forename || errors.surname || errors.nationality || errors.image || errors.dob || errors.description || errors.teams ? null : <button className={style.createDriver} type='submit' >Create Driver</button>}
       </form>
     </div>
   )

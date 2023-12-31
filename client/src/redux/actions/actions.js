@@ -34,7 +34,7 @@ export function getDriversByName(forename) {
         payload: data,
       });
     } catch (error) {
-      return console.error(error.message);
+      return alert(error.response.data.error);
     }
   };
 }
@@ -71,9 +71,12 @@ export function postDriver(driverData) {
   return async (dispatch) => {
     try {
       const { data } = await axios.post(`${URL}/posts`, driverData);
+      // return alert(
+      //   `Driver ${driverData.forename} ${driverData.surname} created successfully`
+      // );
       return data;
     } catch (error) {
-      return console.error(error.message);
+      return alert(error.response.data.error);
     }
   };
 }

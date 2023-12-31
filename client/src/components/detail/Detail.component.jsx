@@ -8,7 +8,7 @@ export default function Detail() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const driver = useSelector(state => state.backupDrivers);
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
   
   function handleButton() {
     navigate('/home');
@@ -19,15 +19,15 @@ export default function Detail() {
   }, []);
   
   return (
-      <div>
-        <button style={style.backButton} onClick={handleButton}>Back</button>
+    <div>
+        <button className={style.backButton} onClick={handleButton}>Back</button>
         <h2>{`${driver.forename} ${driver.surname}`}</h2>
-        <p>{driver.nationality}</p>
+        <p className={style.pNationality}>{driver.nationality}</p>
         <p>{driver.dob}</p>
          <img className={style.imgDetail} src={driver.image} alt={driver.forename} />
          <p>{driver.teams}</p>
          <p>{driver.description}</p>
         <p>{driver.id}</p>
       </div>
-  )
+  );
 };

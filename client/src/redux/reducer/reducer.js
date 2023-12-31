@@ -67,8 +67,8 @@ export default function reducer(state = initialState, action) {
         allDrivers: [...driversBySource],
       };
     case ORDER:
-      let orderedDrivers = [];
-      if (action.payload === "ascAlp") {
+      let orderedDrivers = state.allDrivers;
+      if (action.payload === "ascAz") {
         orderedDrivers = state.allDrivers.sort(function (a, b) {
           if (a.forename > b.forename) {
             return 1;
@@ -78,7 +78,7 @@ export default function reducer(state = initialState, action) {
           }
           return 0;
         });
-      } else if (action.payload === "desAlp") {
+      } else if (action.payload === "desZa") {
         orderedDrivers = state.allDrivers.sort(function (a, b) {
           if (a.forename < b.forename) {
             return 1;
