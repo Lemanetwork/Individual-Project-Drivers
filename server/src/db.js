@@ -3,7 +3,7 @@ const { Sequelize } = require("sequelize");
 
 const fs = require("fs");
 const path = require("path");
-const { PassThrough } = require("stream");
+// const { PassThrough } = require("stream");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 const sequelize = new Sequelize(
@@ -34,6 +34,9 @@ let capsEntries = entries.map((entry) => [
   entry[1],
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
+
+// DriverModel(sequelize);
+// TeamModel(sequelize);
 
 const { Driver, Team } = sequelize.models;
 

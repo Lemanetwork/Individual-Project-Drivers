@@ -1,8 +1,8 @@
 const { Driver, Team } = require("../db");
 const axios = require("axios");
 const balanceDriversInfo = require("../utils/balanceDriversInfo");
-const filterDrivers = require("../utils/filterDrivers");
-const cleanDriversInfo = require("../utils/cleanDriversInfo");
+const filterDriversByName = require("../utils/filterDriversByName");
+const cleanDriversTeams = require("../utils/cleanDriversTeams");
 
 async function getDriversByNameController(forename) {
   forename =
@@ -18,11 +18,11 @@ async function getDriversByNameController(forename) {
     },
   });
 
-  const dataDb = cleanDriversInfo(driversDb);
+  const dataDb = cleanDriversTeams(driversDb);
 
   const driversApi = (await axios.get(`http://localhost:5000/drivers/`)).data;
 
-  let dataApi = filterDrivers(driversApi, forename);
+  let dataApi = filterDriversByName(driversApi, forename);
 
   dataApi = balanceDriversInfo(dataApi);
 

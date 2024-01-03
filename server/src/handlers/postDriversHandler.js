@@ -13,7 +13,7 @@ async function postDriversHandler(req, res) {
     !nationality ||
     !dob
   )
-    res.status(400).json({
+    return res.status(400).json({
       error: "We are missing some important information about the Driver",
     });
 

@@ -1,4 +1,4 @@
-function cleanDriversInfo(driversDb) {
+function cleanDriversTeams(driversDb) {
   const cleanedDrivers = driversDb.map((driver) => {
     const {
       id,
@@ -34,4 +34,4 @@ function cleanDriversInfo(driversDb) {
   return cleanedDrivers;
 }
 
-module.exports = cleanDriversInfo;
+module.exports = cleanDriversTeams;
