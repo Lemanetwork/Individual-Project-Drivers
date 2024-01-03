@@ -1,10 +1,12 @@
 .divCard {
     width: 300px;
     height: auto;
-    background-color:transparent;
+    background-color: rgba(0,0,0,0.5);
+    /* background-color:transparent; */
+    /* border: 2px solid rgb(1, 52, 107); */
+    /* border: 2px solid rgb(250, 240, 5); */
     border: 2px solid rgb(255, 30, 0);
-    /* border: 2px solid rgb(255, 30, 0); */
-    border-radius: 20px;
+    border-radius: 17px;
     padding: 10px;
     cursor:grab;
     -moz-osx-font-smoothing: grayscale;
@@ -18,7 +20,7 @@
 
 .divCard:hover{
     transform: scale(1.05);
-    border-color: aqua;
+    border-color: rgb(0, 158, 213);
 }
 
 .imgCard {
@@ -29,10 +31,13 @@
 }
 
 .h3Link {
+    font-size: 22px;
     transition: 0.25s ease-out;
     text-shadow: 2px 2px 3px black;
     margin: 0 auto 8px auto;
-    color: aqua;
+    /* color: aqua; */
+    /* color: rgb(250, 240, 5); */
+    color: rgb(0, 158, 213);
 }
 
 .h3Link:hover {
@@ -43,4 +48,5 @@
 .pTeams {
     padding: 0 10px;
     font-size: 15px;
+    /* color: rgb(0, 158, 213); */
 }

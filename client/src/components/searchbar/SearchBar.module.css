@@ -4,34 +4,40 @@
 
 .searchButton {
     width: 100px;
-    height: 25px;
+    height: 27px;
     margin-left: 15px;
     font-size: 0.8em;
     font-weight: 300;
-    color: aqua;
-    background-color: transparent;
-    border: 1px solid aqua;
-    border-radius: 40px;
+    /* color: aqua; */
+    color: rgb(255, 30, 0);
+    background-color: rgba(0,0,0,0.4);
+    /* background-color: transparent; */
+    /* border: 1px solid aqua; */
+    border: 1px solid rgb(255, 30, 0);
+    border-radius: 7px;
     padding: 0 16px;
     cursor: pointer;
-    transition: 0.5s linear;
+    transition: 0.3s linear;
 }
 
 .searchButton:hover {
-    transform: scale(1.2);
-    border-color: rgb(255, 30, 0);
+    /* transform: scale(1.2); */
+    /* border-color: rgb(255, 30, 0); */
+    border-color: rgb(0, 158, 213);
 }
 
 input {
     padding-left: 10px;
-    width: 200px;
+    width: 250px;
     height: 26px;
     font-size: 14px;
-    color: aqua;
-    border-radius: 40px;
-    transition: 0.5s linear;
+    /* color: aqua; */
+    color: rgb(0, 158, 213);
+    border-radius: 7px;
+    transition: 0.3s linear;
 }
 
 input:hover {
-    border-color: aqua;
+    /* border-color: aqua; */
+    border-color: rgb(0, 158, 213);
 }

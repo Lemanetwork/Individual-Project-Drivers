@@ -1,14 +1,16 @@
 .list {
-width: 45%;
-    margin: 0 auto;
+    width: 45%;
+    margin: 120px auto 0 auto;
     padding: 0.2em;
     list-style: none;
-    background-color: transparent;
+    background-color: rgba(0,0,0,0.5);
+    /* background-color: transparent; */
     display: flex;
-    border: 1px solid aqua;
+    /* border: 1px solid aqua; */
+    border: 1px solid rgb(0, 158, 213);
     justify-content: center;
     align-items: center;
-    border-radius: 23px;
+    border-radius: 7px;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
@@ -17,29 +19,33 @@ width: 45%;
 .itemNumber {
     width: 20px;
     height: 25px;
+    /* color: rgb(255, 30, 0); */
     color: rgb(255, 30, 0);
     cursor: pointer;
     margin: 0.2em;
-    font-size: 1.1em;
+    font-size: 1em;
     transition: 0.2s linear;
 }
 
 .itemNumber:hover {
   font-weight: 50px;
-  color: aqua;
+  /* color: aqua; */
+  color: rgb(0, 158, 213);
   transform: scale(1.3);
 }
 
 .active {
   transform: scale(1.3);
   vertical-align:middle;
-  border: 1px solid aqua;
+  /* border: 1px solid aqua; */
+  border: 1px solid rgb(0, 158, 213);
   border-radius: 5px;
   width: 22px;
   height: 23px;
-  color: aqua;
+  /* color: aqua; */
+  color: rgb(0, 158, 213);
   margin: 0.2em;
-  font-size: 1.1em;
+  font-size: 1em;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.75);
 }
 
@@ -49,22 +55,34 @@ width: 45%;
   margin: 0 10px;
   font-size: 0.8em;
   font-weight: 300;
-  color: aqua;
-  background-color: transparent;
-  border: 1px solid aqua;
-  border-radius: 40px;
+  /* color: aqua; */
+  color: rgb(255, 30, 0);
+    background-color: rgba(0,0,0,0.2);
+    /* background-color: transparent; */
+  /* border: 1px solid aqua; */
+  border: 1px solid rgb(255, 30, 0);
+  border-radius: 6px;
   padding: 0 16px;
   cursor: pointer;
-  transition: 0.5s linear;
+  transition: 0.3s linear;
 }
 
 .prevButton:hover, .nextButton:hover {
-  transform: scale(1.2);
-  border-color: rgb(255, 30, 0);
+  /* transform: scale(1.2); */
+  /* border-color: rgb(255, 30, 0); */
+  border-color: rgb(0, 158, 213);
+}
+
+.prevButton:disabled, .nextButton:disabled {
+  transform: scale(1);
+  color: rgb(110, 15, 0);
+  border-color: rgb(110, 15, 0);
+  cursor:not-allowed;
 }
 
 .dots {
   margin: 0 5px;
+  /* color: rgb(255, 30, 0); */
   color: rgb(255, 30, 0);
   font-size: 1.1em;
 }

@@ -7,6 +7,8 @@ import {
   FILTER_BY_TEAM,
   FILTER_BY_SOURCE,
   ORDER,
+  CLEAR_DETAIL,
+  GLOBAL_FILTER,
 } from "../actions/actionTypes";
 
 const URL = "http://localhost:3001";
@@ -81,6 +83,17 @@ export function postDriver(driverData) {
   };
 }
 
+export function deleteDriver(id) {
+  return async (dispatch) => {
+    try {
+      await axios.delete(`${URL}/drivers/${id}`);
+      // return alert(`The Driver was deleted successfully`);
+    } catch (error) {
+      return console.error(error.message);
+    }
+  };
+}
+
 export function filterDriversByTeam(team) {
   return {
     type: FILTER_BY_TEAM,
@@ -99,5 +112,19 @@ export function orderDrivers(order) {
   return {
     type: ORDER,
     payload: order,
+  };
+}
+
+export function clearDetail() {
+  return {
+    type: CLEAR_DETAIL,
+    payload: {},
+  };
+}
+
+export function globalFilter(value) {
+  return {
+    type: GLOBAL_FILTER,
+    payload: value,
   };
 }

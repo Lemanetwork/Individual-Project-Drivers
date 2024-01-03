@@ -24,8 +24,9 @@ export default function Home() {
     event.preventDefault();
    dispatch(getAllDrivers());
   };
-
+  
   useEffect(()=>{
+    if(currentDrivers.length === 0)
       dispatch(getAllDrivers());
   }, [dispatch]);
   
@@ -33,14 +34,15 @@ export default function Home() {
     return (
       <div className={style.divHome}>
           <NavigationBar handleReload={handleReload} pagination={pagination}/>
-          <Cards currentDrivers={currentDrivers} />
           <Pagination currentPage={currentPage} maxNumberOfPages={maxNumberOfPages} pagination={pagination} setCurrentPage={setCurrentPage} />
+          <Cards currentDrivers={currentDrivers} />
+          <p>© Copyright 2024 by Luis Manjarrez. All Rights Reserved.</p>
       </div>
     );
-  else 
+  else
     return (
       <div className={style.divLoader}>
-        <h1 style={{fontSize: '70px'}}>Loading...</h1>
+        <button onClick={handleReload} className={style.loadDrivers}>Loading...</button>
       </div>
     );
 };

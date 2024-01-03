@@ -9,13 +9,14 @@ export default function validation(driverData) {
   let errors = {};
 
   if (!regExLeng.test(driverData.forename))
-    errors.forename = "Forename must be only letters, minumum 2.";
+    errors.forename = "Forename must be only letters, minumum 2 characters.";
 
   if (!regExLeng.test(driverData.surname))
-    errors.surname = "Surname must be only letters, minumum 2.";
+    errors.surname = "Surname must be only letters, minumum 2 characters.";
 
   if (!regExLeng.test(driverData.nationality))
-    errors.nationality = "Nationality must be only letters, minumum 2.";
+    errors.nationality =
+      "Nationality must be only letters, minumum 2 characters.";
 
   if (!regExImg.test(driverData.image))
     errors.image = "The provided URL is not an image";

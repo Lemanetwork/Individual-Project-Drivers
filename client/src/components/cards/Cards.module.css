@@ -1,6 +1,6 @@
 .divCards {
-    width: 75vw;
-    margin: 135px auto 60px auto;
+    width: 73.5vw;
+    margin: 35px auto 60px auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 60px 100px;

@@ -16,18 +16,21 @@
         box-shadow: 0px 3px 5px rgba(0,0,0,0.75);
     }
     to {
-        box-shadow: 0px 3px 5px aqua;
+        /* box-shadow: 0px 3px 5px aqua; */
+        box-shadow: 0px 3px 5px rgb(0, 158, 213);
         transform: scale(1.04);
     }
 }
 
 .imgDetail:hover {
-    border-color: aqua;
+    /* border-color: aqua; */
+    border-color: rgb(0, 158, 213);
 }
 
 h2 {
   margin: 0;
-  color: #BA181B;
+  /* color: #BA181B; */
+  color: rgb(0, 158, 213);
   text-shadow: 5px 5px 6px black;
 }
 
@@ -38,12 +41,14 @@ p:nth-of-type(3){
 
 p:nth-of-type(4){
     font-weight: 200;
-    margin-bottom: 10px;
+    margin: auto 70px 10px 70px;
+    /* text-align: justify; */
 }
 
 p:nth-of-type(5) {
     font-weight: 200;
-    color: aqua;
+    /* color: aqua; */
+    color: rgb(255, 30, 0);
 }
 
 .pNationality {
@@ -51,24 +56,39 @@ p:nth-of-type(5) {
     font-size: 22px;
 }
 
-.backButton {
-    position: fixed;
-    top: 50px;
-    left: 100px;
+.backButton, .deleteDriver {
     width: 100px;
-    height: 25px;
+    height: 30px;
     font-size: 0.8em;
     font-weight: 300;
-    color: aqua;
-    background-color: transparent;
-    border: 1px solid aqua;
-    border-radius: 40px;
+    /* color: aqua; */
+    color: rgb(255, 30, 0);
+    background-color: rgba(0,0,0,0.2);
+    /* background-color: transparent; */
+    /* border: 1px solid aqua; */
+    border: 1px solid rgb(255, 30, 0);
+    border-radius: 7px;
     padding: 0;
     cursor: pointer;
-    transition: 0.5s linear;
+    transition: 0.3s linear;
+}
+
+.backButton {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+}
+
+.deleteDriver {
+    position: absolute;
+    top: 50px;
+    right: 100px;
 }
 
 .backButton:hover {
-    transform: scale(1.2);
-    border-color: rgb(255, 30, 0);
+    border-color: rgb(0, 158, 213);
+}
+
+.deleteDriver:hover {
+    border-color: rgb(0, 158, 213);
 }

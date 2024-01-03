@@ -4,12 +4,17 @@ import {
   GET_BY_ID,
   GET_TEAMS,
   POST_DRIVER,
+  DELETE_DRIVER,
   FILTER_BY_TEAM,
   FILTER_BY_SOURCE,
   ORDER,
+  CLEAR_DETAIL,
+  GLOBAL_FILTER,
 } from "../actions/actionTypes";
 
 const initialState = {
+  globalFilter: true,
+  driverDetail: [],
   allDrivers: [],
   backupDrivers: [],
   allTeams: [],
@@ -31,7 +36,7 @@ export default function reducer(state = initialState, action) {
     case GET_BY_ID:
       return {
         ...state,
-        backupDrivers: action.payload,
+        driverDetail: action.payload,
       };
     case GET_TEAMS:
       return {
@@ -42,11 +47,18 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
       };
+    case DELETE_DRIVER:
+      return {
+        ...state,
+      };
     case FILTER_BY_TEAM:
+      const dataByTeam = state.globalFilter
+        ? state.backupDrivers
+        : state.allDrivers;
       const driversByTeam =
         action.payload === "all"
           ? state.backupDrivers
-          : state.backupDrivers.filter(
+          : dataByTeam.filter(
               (driver) => driver.teams && driver.teams.includes(action.payload)
             );
       return {
@@ -54,10 +66,13 @@ export default function reducer(state = initialState, action) {
         allDrivers: [...driversByTeam],
       };
     case FILTER_BY_SOURCE:
+      const dataBySource = state.globalFilter
+        ? state.backupDrivers
+        : state.allDrivers;
       const driversBySource =
         action.payload === "all"
           ? state.backupDrivers
-          : state.backupDrivers.filter((driver) => {
+          : dataBySource.filter((driver) => {
               if (action.payload === "db" && isNaN(driver.id)) return driver;
               else if (action.payload === "api" && !isNaN(driver.id))
                 return driver;
@@ -112,6 +127,16 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         allDrivers: [...orderedDrivers],
+      };
+    case CLEAR_DETAIL:
+      return {
+        ...state,
+        driverDetail: action.payload,
+      };
+    case GLOBAL_FILTER:
+      return {
+        ...state,
+        globalFilter: action.payload,
       };
     default:
       return {

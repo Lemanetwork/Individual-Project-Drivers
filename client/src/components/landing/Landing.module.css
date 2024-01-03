@@ -1,6 +1,8 @@
 .divLanding {
 background-size: cover;
-background-image: url("../../assets/F1_2.png");
+/* background-image: url("../../assets/red_bull_racing_f1_hd-HD.jpg"); */
+background-image: url("../../assets/wp8757587-formula-1-logo-wallpapers.png");
+/* background-position: top; */
 position: absolute;
 left: 0;
 right: 0;
@@ -11,23 +13,27 @@ bottom: 0;
 .landingButton {
   position: absolute;
   top: 10%;
-  right: 10%;
-  left: 10%;
+  right: 20%;
+  left: 20%;
   font-size: 4em;
   font-weight: 500;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: rgb(30, 30, 30);
   background-color: transparent;
   border: 1px solid rgb(11, 11, 11);
-  border-radius: 40px;
+  border-radius: 10px;
   padding: 0 16px;
   cursor: pointer;
-  transition: all 0.5s linear;
+  transition: all 0.3s linear;
 }
 
 .landingButton:hover {
   transform: scale(1.2);
   text-shadow: 10px 10px 15px rgb(30, 30, 30);
-  border-color: aqua;
-  color: aqua;
+  /* border-color: rgb(9, 253, 253); */
+  border-color: rgb(255, 30, 0);
+  /* color: rgb(9, 253, 253); */
+  /* color: rgb(250, 240, 5); */
+  color: rgb(167, 25, 15);
+  /* color: whitesmoke; */
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import validation from '../validation';
-import { getTeams, postDriver } from '../../redux/actions/actions';
+import { getAllDrivers, getTeams, postDriver } from '../../redux/actions/actions';
 import style from './Create.module.css';
 
 export default function Create() {
@@ -59,15 +59,18 @@ export default function Create() {
       description: "",
       teams: ""
     });
+    dispatch(getAllDrivers());
     navigate('/home');
   };
   
 useEffect(()=> {
-  dispatch(getTeams());
+  if(!allTeams.length)
+    dispatch(getTeams());
 },[]);
 
   return (
     <div className={style.mainDiv}>
+    <div className={style.createDiv}>
 
       <div>
         <Link to={'/home'} ><button className={style.backButton} >Back</button></Link>
@@ -119,7 +122,8 @@ useEffect(()=> {
 
         <div className={style.divCreate}>
           <label  className={style.createLabel} htmlFor='teams'>Teams:</label>
-          <select className={style.createSelect} name='teams' onChange={handleSelect}>
+          <select className={style.createSelect} name='teams' onChange={handleSelect} defaultValue={'empty'}>
+          <option value='empty' disabled></option>
             {allTeams.map((team) => (
               <option value={team} key={team}>{team}</option>
             ))};
@@ -133,6 +137,7 @@ useEffect(()=> {
 
         {errors.forename || errors.surname || errors.nationality || errors.image || errors.dob || errors.description || errors.teams ? null : <button className={style.createDriver} type='submit' >Create Driver</button>}
       </form>
+    </div>
     </div>
   )
 };
