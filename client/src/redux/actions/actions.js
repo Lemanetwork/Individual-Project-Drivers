@@ -11,7 +11,8 @@ import {
   GLOBAL_FILTER,
 } from "../actions/actionTypes";
 
-const URL = "http://localhost:3001";
+// const URL = "http://localhost:3001";
+const URL = "https://server-drivers-7tos.onrender.com";
 
 export function getAllDrivers() {
   return async (dispatch) => {
