@@ -4,13 +4,19 @@ const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
 // const { PassThrough } = require("stream");
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOYED } = process.env;
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`,
+  // `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`,
+  DB_DEPLOYED,
   {
     logging: false,
     native: false,
+        dialectOptions: {
+      ssl: {
+        require: true,
+      }
+    }
   }
 );
 const basename = path.basename(__filename);
