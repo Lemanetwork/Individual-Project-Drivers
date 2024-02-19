@@ -22,17 +22,20 @@ export default function Detail() {
     dispatch(clearDetail());
   }, []);
   
-  return (
-    <div className={style.divDetail}>
-        <Link to={'/home'}><button className={style.backButton} >Back</button></Link>
-        {isNaN(id) ? <button onClick={handleDelete} className={style.deleteDriver} >Delete Driver</button> : null}
-        <h2>{`${driver.forename} ${driver.surname}`}</h2>
-        <p className={style.pNationality}>{driver.nationality}</p>
-        <p>{driver.dob}</p>
-         <img className={style.imgDetail} src={driver.image} alt={driver.forename} />
-         <p>{driver.teams}</p>
-         <p>{driver.description}</p>
-        <p>{driver.id}</p>
-      </div>
-  );
+  if (!driver.forename || !driver.surname)
+    return <div><h2>Loading...</h2></div>
+  else
+    return (
+      <div className={style.divDetail}>
+          <Link to={'/home'}><button className={style.backButton} >Back</button></Link>
+          {isNaN(id) ? <button onClick={handleDelete} className={style.deleteDriver} >Delete Driver</button> : null}
+          <h2>{`${driver.forename} ${driver.surname}`}</h2>
+          <p className={style.pNationality}>{driver.nationality}</p>
+          <p>{driver.dob}</p>
+           <img className={style.imgDetail} src={driver.image} alt={driver.forename} />
+           <p>{driver.teams}</p>
+           <p>{driver.description}</p>
+          <p>{driver.id}</p>
+        </div>
+    );
 };
